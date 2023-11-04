@@ -53,7 +53,9 @@
       // "<br>Longitude: " + position.coords.longitude;
     }
     
-    window.onload = getLocation;
+    window.onload = () => {
+      getLocation();
+    };
   </script>
 </head>
 
