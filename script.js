@@ -94,4 +94,4 @@ const init = () => {
   console.log('Intialization complete')
 }
 
-window.onload = init;
+init();
