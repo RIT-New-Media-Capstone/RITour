@@ -14,11 +14,14 @@ const createLocations = () => {
 
     let scene = document.querySelector('#scene')
     scene.appendChild(newEntity);
+    console.log('new entity created: ' + newEntity)
   }
 }
 
 const init = () => {
+  console.log("data: " + data)
   createLocations();
+  console.log('Intialization complete')
 }
 
 window.onload = init;
