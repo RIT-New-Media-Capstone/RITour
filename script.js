@@ -51,6 +51,8 @@ const data = {
 
 const createLocations = () => {
   for(let loc in data) {
+    console.log(loc)
+    console.dir(loc)
     let newEntity = document.createElement('a-text')
     newEntity.setAttribute('value', `${loc.name}`)
     newEntity.setAttribute('gps-new-entity-place', `latitude: ${loc.lat}; longitude: ${loc.long}`);
@@ -60,12 +62,11 @@ const createLocations = () => {
 
     let scene = document.querySelector('#scene')
     scene.appendChild(newEntity);
-    console.log('new entity created: ' + newEntity)
+    console.log('new entity created: ' + loc.name)
   }
 }
 
 const init = () => {
-  console.log("data: " + data)
   createLocations();
   console.log('Intialization complete')
 }
