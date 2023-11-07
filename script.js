@@ -55,7 +55,7 @@ const createLocations = () => {
     console.dir(data[loc])
     let newEntity = document.createElement('a-text')
     newEntity.setAttribute('value', `${data[loc].name}`)
-    // newEntity.setAttribute('gps-new-entity-place', `latitude: ${data[loc].lat}; longitude: ${data[loc].long}`);
+    newEntity.setAttribute('gps-new-entity-place', `latitude: ${data[loc].lat}; longitude: ${data[loc].long}`);
     newEntity.setAttribute('gps-new-entity-place', `latitude:`);
     //not necessary unless we can get it working.
     newEntity.setAttribute('look-at','[gps-new-camera]')
