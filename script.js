@@ -51,12 +51,15 @@ const data = {
 
 const createLocations = () => {
   for(let loc in data) {
-    console.log(data[loc])
-    console.dir(data[loc])
+    console.log(data[loc].name)
+
+    let coordinates = `latitude: ${data[loc].lat}; longitude: ${data[loc].long}`
+    console.log(data[loc].name + ", " + coordinatees)
+
     let newEntity = document.createElement('a-text')
     newEntity.setAttribute('value', `${data[loc].name}`)
-    newEntity.setAttribute('gps-new-entity-place', `latitude: ${data[loc].lat}; longitude: ${data[loc].long}`);
-    newEntity.setAttribute('gps-new-entity-place', `latitude:`);
+    newEntity.setAttribute('gps-new-entity-place', coordinates);
+    // newEntity.setAttribute('gps-new-entity-place', `latitude:`);
     //not necessary unless we can get it working.
     newEntity.setAttribute('look-at','[gps-new-camera]')
     newEntity.setAttribute('scale','120 120 120')
