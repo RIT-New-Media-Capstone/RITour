@@ -4,7 +4,7 @@ import data from '../data.json' assert{type: "json"};
 //Replace with appropriat function from jordan's get functions
 
 const createLocations = () => {
-  for(let loc of data) {
+  for(let loc in data) {
     let newEntity = document.createElement('a-text')
     newEntity.setAttribute('value', `${loc.name}`)
     newEntity.setAttribute('gps-new-entity-place', `latitude: ${loc.lat}; longitude: ${loc.long}`);

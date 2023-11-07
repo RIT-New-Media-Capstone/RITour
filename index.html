@@ -22,76 +22,7 @@
 <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
 <script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/three.js/build/ar-threex-location-only.js'></script>
 <script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js'></script>
-<script>
-
-  data = {
-    "Orange Hall": {
-        "name": "Orange Hall",
-        "desription": "Home to many IGM classrooms and offices",
-        "type": "Academic Building",
-        "lat": 43.08364334644275,
-        "long": -77.67879412947539
-    },
-    "Kate Gleason College of Engineering": {
-        "name": "Kate Gleason College of Engineering",
-        "desription": "From space stations to nanotechnology, the potential for innovative engineering is endless.",
-        "type": "Academic Building",
-        "lat": 43.08411253414598,
-        "long": -77.67906889761478
-    },
-    "Golisano Hall": {
-        "name": "Golisano Hall",
-        "desription": "A center for cutting-edge study and research, this building is the home to the B. Thomas Golisano College of Computing and Information Sciences. This facility includes academic classrooms and labs for computer science, information technology, and software engineering students, as well as a 151-seat auditorium and a beautiful three-story atrium.",
-        "type": "Academic Building",
-        "lat": 43.0838793356455,
-        "long": -77.67972651060029
-    },
-    "Fountain Park": {
-        "name": "Fountain Park",
-        "desription": "Home",
-        "type": "Outdoor Area",
-        "lat": 43.083228410769735,
-        "long": -77.67899871508926
-    },
-    "CTRL ALT Deli": {
-        "name": "CTRL ALT Deli",
-        "desription": "Grab and Go Food and Beverages",
-        "type": "Dining",
-        "lat": 43.084587365959266,
-        "long": -77.68009297331419
-    },
-    "Thomas Gosnell Hall": {
-        "name": "Thomas Gosnell Hall",
-        "desription": "An academic building that houses classrooms, labs and department offices for the College of Science, with undergraduate and graduate programs in mathematics, biology, bioinformatics, physics and medical sciences.",
-        "type": "Academic Building",
-        "lat": 43.0836820814997,
-        "long": -77.67779953456292
-    }
-  };
-
-  const createLocations = () => {
-    for(let loc of data) {
-      let newEntity = document.createElement('a-text')
-      newEntity.setAttribute('value', `${loc.name}`)
-      newEntity.setAttribute('gps-new-entity-place', `latitude: ${loc.lat}; longitude: ${loc.long}`);
-      //not necessary unless we can get it working.
-      newEntity.setAttribute('look-at','[gps-new-camera]')
-      newEntity.setAttribute('scale','120 120 120')
-
-      let scene = document.querySelector('#scene')
-      scene.appendChild(newEntity);
-      console.log('new entity created: ' + newEntity)
-    }
-  }
-
-  const init = () => {
-    console.log("data: " + data)
-    createLocations();
-    console.log('Intialization complete')
-  }
-
-  window.onload = init;
-</script>
+<script src="script.js"></script>
 </head>
 <body>
   <a-scene vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false' renderer='antialias: true; alpha: true' id="scene">
