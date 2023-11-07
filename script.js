@@ -58,11 +58,13 @@ const createLocations = () => {
 
     let newEntity = document.createElement('a-text')
     newEntity.setAttribute('value', `${data[loc].name}`)
-    newEntity.setAttribute('gps-new-entity-place', coordinates);
+    let gps = document.createAttribute('gps-new-entity-place');
+    gps.value = coordinates;
+    newEntity.setAttributeNode(gps);
     // newEntity.setAttribute('gps-new-entity-place', `latitude:`);
     //not necessary unless we can get it working.
     newEntity.setAttribute('look-at','[gps-new-camera]')
-    newEntity.setAttribute('scale','120 120 120')
+    // newEntity.setAttribute('scale','120 120 120')
 
     let scene = document.querySelector('#scene')
     scene.appendChild(newEntity);
