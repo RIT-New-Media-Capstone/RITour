@@ -77,8 +77,20 @@ const createLocations = () => {
   }
 }
 
+const updateExisting = () => {
+  let el = document.querySelector('#text1')
+  let scene = document.querySelector('#scene')
+  
+  let gps = document.createAttribute('gps-new-entity-place');
+    gps.value = 'latitude: 43.08411253414598; longitude: -77.67906889761478';
+    el.setAttributeNode(gps);
+
+  el.setAttribute('value','TEST TEXT')
+}
+
 const init = () => {
-  createLocations();
+  // createLocations();
+  updateExisting();
   console.log('Intialization complete')
 }
 
