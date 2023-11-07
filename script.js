@@ -54,7 +54,7 @@ const createLocations = () => {
     console.log(data[loc].name)
 
     let coordinates = `latitude: ${data[loc].lat}; longitude: ${data[loc].long}`
-    console.log(data[loc].name + ", " + coordinatees)
+    console.log(data[loc].name + ", " + coordinates)
 
     let newEntity = document.createElement('a-text')
     newEntity.setAttribute('value', `${data[loc].name}`)
