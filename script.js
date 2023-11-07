@@ -50,6 +50,7 @@ const data = {
 
 
 const createLocations = () => {
+  let scene = document.querySelector('#scene')
   for(let loc in data) {
     console.log(data[loc].name)
 
@@ -57,16 +58,20 @@ const createLocations = () => {
     console.log(data[loc].name + ", " + coordinates)
 
     let newEntity = document.createElement('a-text')
+
     newEntity.setAttribute('value', `${data[loc].name}`)
+
     let gps = document.createAttribute('gps-new-entity-place');
     gps.value = coordinates;
     newEntity.setAttributeNode(gps);
-    // newEntity.setAttribute('gps-new-entity-place', `latitude:`);
+
     //not necessary unless we can get it working.
     newEntity.setAttribute('look-at','[gps-new-camera]')
     // newEntity.setAttribute('scale','120 120 120')
+    let scale = document.createAttribute('scale');
+    scale.value = '120 120 120';
+    newEntity.setAttributeNode(scale);
 
-    let scene = document.querySelector('#scene')
     scene.appendChild(newEntity);
     console.log('new entity created: ' + data[loc].name)
   }
