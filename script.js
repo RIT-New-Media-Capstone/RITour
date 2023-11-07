@@ -89,8 +89,8 @@ const updateExisting = () => {
 }
 
 const init = () => {
-  // createLocations();
-  updateExisting();
+  createLocations();
+  // updateExisting();
   console.log('Intialization complete')
 }
 
