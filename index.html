@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+
+<!-- MARKER BASED -->
+<!-- <html>
+  <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+  <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+  <body style="margin : 0px; overflow: hidden;">
+    <a-scene embedded arjs>
+      <a-marker preset="hiro" id="marker">
+        
+        <a-box position='0 0.5 0' color="yellow" id="box"></a-box>
+      </a-marker>
+      <a-entity camera></a-entity>
+    </a-scene>
+  </body>
+</html> -->
+
+<!-- LOCATION BASED -->
+<html>
+<head>
+<title>AR.js A-Frame Location-based</title>
+<script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+<script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/three.js/build/ar-threex-location-only.js'></script>
+<script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js'></script>
+<!-- <script src="script.js"></script> -->
+</head>
+<body>
+  <a-scene vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false' renderer='antialias: true; alpha: true' id="scene">
+      <a-camera gps-new-camera='gpsMinDistance: 5'></a-camera>
+      <!-- Gleason -->
+      <a-entity material='color: red' geometry='primitive: box' gps-new-entity-place="latitude: 43.08411253414598; longitude: -77.67906889761478" scale="10 10 10"></a-entity>
+      <!-- for testing existing objs -->
+      <a-text id="text1" value="placeholder", gps-new-entity-place="" scale="120 120 120" look-at="[gps-camera]"></a-text>
+      <!-- Look-at doesn't seem to work :/ -->
+      <!-- <a-text value="Face you!" look-at="[gps-camera]" scale="120 120 120" gps-new-entity-place="latitude: 43.12819588731071; longitude: -77.64010711960452"></a-text> -->
+  </a-scene>
+
+  <script>
+    const data = {
+      "Orange Hall": {
+          "name": "Orange Hall",
+          "desription": "Home to many IGM classrooms and offices",
+          "type": "Academic Building",
+          "lat": 43.08364334644275,
+          "long": -77.67879412947539
+      },
+      "Kate Gleason College of Engineering": {
+          "name": "Kate Gleason College of Engineering",
+          "desription": "From space stations to nanotechnology, the potential for innovative engineering is endless.",
+          "type": "Academic Building",
+          "lat": 43.08411253414598,
+          "long": -77.67906889761478
+      },
+      "Golisano Hall": {
+          "name": "Golisano Hall",
+          "desription": "A center for cutting-edge study and research, this building is the home to the B. Thomas Golisano College of Computing and Information Sciences. This facility includes academic classrooms and labs for computer science, information technology, and software engineering students, as well as a 151-seat auditorium and a beautiful three-story atrium.",
+          "type": "Academic Building",
+          "lat": 43.0838793356455,
+          "long": -77.67972651060029
+      },
+      "Fountain Park": {
+          "name": "Fountain Park",
+          "desription": "Home",
+          "type": "Outdoor Area",
+          "lat": 43.083228410769735,
+          "long": -77.67899871508926
+      },
+      "CTRL ALT Deli": {
+          "name": "CTRL ALT Deli",
+          "desription": "Grab and Go Food and Beverages",
+          "type": "Dining",
+          "lat": 43.084587365959266,
+          "long": -77.68009297331419
+      },
+      "Thomas Gosnell Hall": {
+          "name": "Thomas Gosnell Hall",
+          "desription": "An academic building that houses classrooms, labs and department offices for the College of Science, with undergraduate and graduate programs in mathematics, biology, bioinformatics, physics and medical sciences.",
+          "type": "Academic Building",
+          "lat": 43.0836820814997,
+          "long": -77.67779953456292
+      },
+      "Max Testing" : {
+        "name": "Max Testing",
+        "lat": 43.084041511470915, 
+        "long": -77.6764171384425,
+      },
+      "Max Testing 2" : {
+        "name": "Max Testing 2",
+        "lat": 43.08465270337437,
+        "long": -77.67536571254693,
+      }
+    } 
+
+    // Remove this when merging with Jordan's branch
+    //Replace with appropriat function from jordan's get functions
+
+
+    const createLocations = () => {
+      let scene = document.querySelector('#scene')
+      for(let loc in data) {
+        console.log(data[loc].name)
+
+        let coordinates = `latitude: ${data[loc].lat}; longitude: ${data[loc].long}`
+        console.log(data[loc].name + ", " + coordinates)
+
+        let newEntity = document.createElement('a-text')
+
+        newEntity.setAttribute('value', `${data[loc].name}`)
+
+        let gps = document.createAttribute('gps-new-entity-place');
+        gps.value = coordinates;
+        newEntity.setAttributeNode(gps);
+
+        //not necessary unless we can get it working.
+        newEntity.setAttribute('look-at','[gps-new-camera]')
+        // newEntity.setAttribute('scale','120 120 120')
+        let scale = document.createAttribute('scale');
+        scale.value = '120 120 120';
+        newEntity.setAttributeNode(scale);
+
+        scene.appendChild(newEntity);
+        console.log('new entity created: ' + data[loc].name)
+      }
+    }
+
+    const updateExisting = () => {
+      let el = document.querySelector('#text1')
+      let scene = document.querySelector('#scene')
+      
+      let gps = document.createAttribute('gps-new-entity-place');
+        gps.value = 'latitude: 43.08411253414598; longitude: -77.67906889761478';
+        el.setAttributeNode(gps);
+
+      el.setAttribute('value','TEST TEXT')
+    }
+
+    const init = () => {
+      createLocations();
+      // updateExisting();
+      console.log('Intialization complete')
+    }
+
+    init();
+  </script>
+  
+</body>
+</html>
