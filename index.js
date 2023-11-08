@@ -26,11 +26,11 @@ window.onload = () => {
       }
   });
 
-  // document.getElementById("go").addEventListener("click", e=> {
-  //     const lat = document.getElementById('lat').value;
-  //     const lon = document.getElementById('lon').value;
-  //     const minacc = document.getElementById('minacc').value;
+  document.getElementById("go").addEventListener("click", e=> {
+      const lat = document.getElementById('lat').value;
+      const lon = document.getElementById('lon').value;
+      const minacc = document.getElementById('minacc').value;
 
-  //     el.setAttribute('gps-new-camera', { simulateLatitude: lat, simulateLongitude: lon, positionMinAccuracy: minacc } );
-  // });
+      el.setAttribute('gps-new-camera', { simulateLatitude: lat, simulateLongitude: lon, positionMinAccuracy: minacc } );
+  });
 };
