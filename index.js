@@ -10,6 +10,7 @@ window.onload = () => {
         // Change these names
           for(const prop of data) {
               const entity = document.createElement("a-text");
+              entity.setAttribute("value", `${data[prop].name}`)
               entity.setAttribute("scale", {
                   x: 120, 
                   y: 120,
