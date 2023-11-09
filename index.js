@@ -1,7 +1,7 @@
 // import data from '../data.json' assert{type: "json"}; 
 window.onload = () => {
   let testEntitiesAdded = false;
-  alert('If testing the lat/lon manual input on a mobile device, please turn off your GPS to avoid the real location being detected.');
+  // alert('If testing the lat/lon manual input on a mobile device, please turn off your GPS to avoid the real location being detected.');
   const el = document.querySelector("[gps-new-camera]");
   el.addEventListener("gps-camera-update-position", e => {
       if(!testEntitiesAdded) {
@@ -72,11 +72,11 @@ window.onload = () => {
       }
   });
 
-  document.getElementById("go").addEventListener("click", e=> {
-      const lat = document.getElementById('lat').value;
-      const lon = document.getElementById('lon').value;
-      const minacc = document.getElementById('minacc').value;
+  // document.getElementById("go").addEventListener("click", e=> {
+  //     const lat = document.getElementById('lat').value;
+  //     const lon = document.getElementById('lon').value;
+  //     const minacc = document.getElementById('minacc').value;
 
-      el.setAttribute('gps-new-camera', { simulateLatitude: lat, simulateLongitude: lon, positionMinAccuracy: minacc } );
-  });
+  //     el.setAttribute('gps-new-camera', { simulateLatitude: lat, simulateLongitude: lon, positionMinAccuracy: minacc } );
+  // });
 };
