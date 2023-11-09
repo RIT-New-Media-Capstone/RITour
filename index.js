@@ -2,7 +2,7 @@
 window.onload = () => {
   let testEntitiesAdded = false;
   const el = document.querySelector("[gps-new-camera]");
-  // el.addEventListener("gps-camera-update-position", e => {
+  el.addEventListener("gps-camera-update-position", e => {
       if(!testEntitiesAdded) {
           // alert(`Initial position: ${e.detail.position.longitude} ${e.detail.position.latitude}`);
       
@@ -87,7 +87,7 @@ window.onload = () => {
           //     document.querySelector("a-scene").appendChild(entity);
           // }
 
-          //BOXES
+          // BOXES
         //   for(const prop in data) {
         //     const entity = document.createElement("a-box");
         //     entity.setAttribute("scale", {
@@ -95,7 +95,7 @@ window.onload = () => {
         //         y: 20,
         //         z: 20
         //     });
-        //     entity.setAttribute('material', { color: red } );
+        //     entity.setAttribute('material', { color: 'red' } );
         //     entity.setAttribute('gps-new-entity-place', {
         //         latitude: prop.lat,
         //         longitude: prop.long
@@ -104,31 +104,65 @@ window.onload = () => {
         //     document.querySelector("a-scene").appendChild(entity);
         // }
 
-          for(const prop in data) {
-            let coordinates = `latitude: ${data[prop].lat}; longitude: ${data[prop].long}`
-            console.log(data[prop].name + ", " + coordinates)
+            const properties = [{
+              color: 'red',
+              latDis: 0.001,
+              lonDis: 0
+          },{
+              color: 'yellow',
+              latDis: -0.001,
+              lonDis: 0
+          },{
+              color: 'blue',
+              latDis: 0,
+              lonDis: -0.001
+          },{
+              color: 'green',
+              latDis: 0,
+              lonDis: 0.001
+            }
+          ];
+      for(const prop of properties) {
+          const entity = document.createElement("a-box");
+          entity.setAttribute("scale", {
+              x: 20, 
+              y: 20,
+              z: 20
+          });
+          entity.setAttribute('material', { color: prop.color } );
+          entity.setAttribute('gps-new-entity-place', {
+              latitude: 43.083 + prop.latDis,
+              longitude: -77.678 + prop.lonDis
+          });
+          entity.setAttribute('clicker', { });                
+          document.querySelector("a-scene").appendChild(entity);
+      }
 
-            let newEntity = document.createElement('a-text')
+          // for(const prop in data) {
+          //   let coordinates = `latitude: ${data[prop].lat}; longitude: ${data[prop].long}`
+          //   console.log(data[prop].name + ", " + coordinates)
 
-            newEntity.setAttribute('value', `${data[prop].name}`)
+          //   let newEntity = document.createElement('a-text')
 
-            let gps = document.createAttribute('gps-new-entity-place');
-            gps.value = coordinates;
-            newEntity.setAttributeNode(gps);
+          //   newEntity.setAttribute('value', `${data[prop].name}`)
 
-            //not necessary unless we can get it working.
-            newEntity.setAttribute('look-at', '[gps-new-camera]')
-            // newEntity.setAttribute('scale','120 120 120')
-            let scale = document.createAttribute('scale');
-            scale.value = '120 120 120';
-            newEntity.setAttributeNode(scale);
+          //   let gps = document.createAttribute('gps-new-entity-place');
+          //   gps.value = coordinates;
+          //   newEntity.setAttributeNode(gps);
 
-            scene.appendChild(newEntity);
-          }
+          //   //not necessary unless we can get it working.
+          //   newEntity.setAttribute('look-at', '[gps-new-camera]')
+          //   // newEntity.setAttribute('scale','120 120 120')
+          //   let scale = document.createAttribute('scale');
+          //   scale.value = '120 120 120';
+          //   newEntity.setAttributeNode(scale);
+
+          //   scene.appendChild(newEntity);
+          // }
         
           testEntitiesAdded = true;
       }
-  // });
+  });
 
   // document.getElementById("go").addEventListener("click", e=> {
   //     const lat = document.getElementById('lat').value;
