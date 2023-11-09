@@ -25,9 +25,19 @@ window.onload = () => {
               },{
                   color: 'blue',
                   latDis: 0,
-                  lonDis: 0.001,
+                  lonDis: 0.01,
                   name: 'Sundial'
-              }
+              },{
+                color: 'yellow',
+                latDis: -0.001,
+                lonDis: 0.004,
+                name: 'Gene Polisseni Center'
+            },{
+              color: 'yellow',
+              latDis: 0,
+              lonDis: -0.006,
+              name: 'Red Barn'
+          }
           ];
           for(const prop of properties) {
               const entity = document.createElement("a-box");
@@ -48,11 +58,11 @@ window.onload = () => {
       }
   });
 
-  document.getElementById("go").addEventListener("click", e=> {
-      const lat = document.getElementById('lat').value;
-      const lon = document.getElementById('lon').value;
-      const minacc = document.getElementById('minacc').value;
+  // document.getElementById("go").addEventListener("click", e=> {
+  //     const lat = document.getElementById('lat').value;
+  //     const lon = document.getElementById('lon').value;
+  //     const minacc = document.getElementById('minacc').value;
 
-      el.setAttribute('gps-new-camera', { simulateLatitude: lat, simulateLongitude: lon, positionMinAccuracy: minacc } );
-  });
+  //     el.setAttribute('gps-new-camera', { simulateLatitude: lat, simulateLongitude: lon, positionMinAccuracy: minacc } );
+  // });
 };
