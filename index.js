@@ -35,12 +35,13 @@ window.onload = () => {
               latDis: 0,
               lonDis: -0.006,
               name: 'Red Barn'
-            },{
-              color: 'green',
-              latDis: 0.001,
-              lonDis: 0.001,
-              name: 'test'
-            }
+            },
+            // {
+            //   color: 'green',
+            //   latDis: 0.001,
+            //   lonDis: 0.001,
+            //   name: 'test'
+            // }
           ];
           for(const prop of properties) {
               const entity = document.createElement("a-box");
