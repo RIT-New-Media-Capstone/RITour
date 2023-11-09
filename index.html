@@ -1,49 +1,21 @@
 <!DOCTYPE html>
-
-<!-- MARKER BASED -->
-<!-- <html>
-  <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
-  <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
-  <body style="margin : 0px; overflow: hidden;">
-    <a-scene embedded arjs>
-      <a-marker preset="hiro" id="marker">
-        
-        <a-box position='0 0.5 0' color="yellow" id="box"></a-box>
-      </a-marker>
-      <a-entity camera></a-entity>
-    </a-scene>
-  </body>
-</html> -->
-
-<!-- LOCATION BASED -->
 <html>
 <head>
-<title>AR.js A-Frame Location-based</title>
+<title>AR.js A-Frame</title>
 <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
 <script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/three.js/build/ar-threex-location-only.js'></script>
 <script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js'></script>
-<!-- <script src="script.js"></script> -->
+<script src='index.js'></script>
+<script src='clicker.js'></script>
 </head>
 <body>
-  <a-scene vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false' renderer='antialias: true; alpha: true'>
-      <!-- <a-camera gps-new-camera='gpsMinDistance: 5'></a-camera> -->
-      <a-camera gps-new-camera='gpsMinDistance: 5; simulatedLatitude: 43.084; simulatedLongitude: -77.679'></a-camera>
-      <a-entity material='color: red' geometry='primitive: box' gps-new-entity-place='latitude: 43.08411253414598; longitude: -77.67906889761478' scale='10 10 10'></a-entity>
-      <!-- <a-text id="text1" value="placeholder", gps-new-entity-place="" scale="120 120 120" look-at="[gps-camera]"></a-text> -->
-
-			<!-- Library -->
-			<a-entity material='color: red' geometry='primitive: box' gps-new-entity-place='latitude: 43.084; longitude: -77.676' scale='10 10 10'></a-entity>
-			<!-- Global -->
-			<a-entity material='color: blue' geometry='primitive: box' gps-new-entity-place='latitude: 43.083; longitude: -77.681' scale='10 10 10'></a-entity>
-			<!-- Entrance -->
-			<a-entity material='color: blue' geometry='primitive: box' gps-new-entity-place='latitude: 43.092; longitude: -77.675' scale='10 10 10'></a-entity>
-			<!-- Sundial -->
-			<a-entity material='color: blue' geometry='primitive: box' gps-new-entity-place='latitude: 43.084; longitude: -77.669' scale='10 10 10'></a-entity>
-			<!-- Polisseni center -->
-			<a-entity material='color: yellow' geometry='primitive: box' gps-new-entity-place='latitude: 43.083; longitude: -77.675' scale='10 10 10'></a-entity>
-			<!-- Red Barn -->
-			<a-entity material='color: yellow' geometry='primitive: box' gps-new-entity-place='latitude: 43.084; longitude: -77.685' scale='10 10 10'></a-entity>
-  </a-scene>
-  
+<a-scene vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false' renderer='antialias: true; alpha: true' cursor='rayOrigin: mouse' raycaster='near: 0; far:10000'>
+	<a-camera gps-new-camera='gpsMinDistance: 5; initialPositionAsOrigin: true' wasd-controls='acceleration: 1300'></a-camera>
+</a-scene>
+<!-- <div id='setloc' style='position:absolute; left: 10px; bottom: 2%; z-index:999; background-color: blue; color: white; padding: 10px'>
+Lat:<input id="lat" value="51.049" /> 
+Lon: <input id="lon" value="-0.723"/> 
+Min Acc: <input id='minacc' value='1000' /> <input type='button' id='go' value='go' /> -->
+</div>
 </body>
 </html>
