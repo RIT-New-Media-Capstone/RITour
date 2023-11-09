@@ -2,7 +2,7 @@ AFRAME.registerComponent('clicker', {
   init: function() {
       const cameraEl = document.querySelector('a-camera');
       let position, cameraPos;
-      console.dir(this.el);
+      // console.dir(this.el);
       this.el.addEventListener('click', e => {
           position = this.el.object3D.position; 
           cameraPos = cameraEl.object3D.position;
