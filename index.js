@@ -5,8 +5,6 @@ window.onload = () => {
   el.addEventListener("gps-camera-update-position", e => {
       if(!testEntitiesAdded) {
           alert(`Initial position: ${e.detail.position.longitude} ${e.detail.position.latitude}`);
-          // Add four boxes to the north (red), south (yellow), west (blue)
-          // and east (red) of the initial GPS position
           const properties = [{
                   color: 'red',
                   latDis: 0,
@@ -37,7 +35,12 @@ window.onload = () => {
               latDis: 0,
               lonDis: -0.006,
               name: 'Red Barn'
-          }
+            },{
+              color: 'green',
+              latDis: 0.001,
+              lonDis: 0.001,
+              name: 'test'
+            }
           ];
           for(const prop of properties) {
               const entity = document.createElement("a-box");
